@@ -445,8 +445,14 @@ class FloatingPanelCore: NSObject, UIGestureRecognizerDelegate {
                 guard gesture.state == .began || gesture.state == .changed
                 else { continue }
 
-                if gesture !=  scrollView.panGestureRecognizer {
-                    return true
+                if #available(iOS 13.0, *) {
+                    if gesture != scrollView.panGestureRecognizer && !(gesture is UIHoverGestureRecognizer) {
+                        return true
+                    }
+                } else {
+                    if gesture != scrollView.panGestureRecognizer {
+                        return true
+                    }
                 }
             }
         }
