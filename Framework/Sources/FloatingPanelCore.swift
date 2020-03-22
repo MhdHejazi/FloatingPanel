@@ -418,13 +418,13 @@ class FloatingPanelCore: NSObject, UIGestureRecognizerDelegate {
                 panningChange(with: translation)
             case .ended, .cancelled, .failed:
                 if interactionInProgress == false {
-                    startInteraction(with: translation, at: location)
+                    //startInteraction(with: translation, at: location)
                     // Workaround: Prevent stopping the surface view b/w anchors if the pan gesture
                     // doesn't pass through .changed state after an interruptible animator is interrupted.
-                    let dy = translation.y - .leastNonzeroMagnitude
-                    layoutAdapter.updateInteractiveTopConstraint(diff: dy,
-                                                                 allowsTopBuffer: true,
-                                                                 with: behavior)
+                    //let dy = translation.y - .leastNonzeroMagnitude
+                    //layoutAdapter.updateInteractiveTopConstraint(diff: dy,
+                    //                                             allowsTopBuffer: true,
+                    //                                             with: behavior)
                 }
                 panningEnd(with: translation, velocity: velocity)
             default:
